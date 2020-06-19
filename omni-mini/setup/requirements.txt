@@ -1,0 +1,11 @@
+setuptools
+numpy>=1.14.0
+scipy
+Pillow>=7.0.0
+h5py~=2.9.0
+tqdm>=4.0.0
+requests
+torchmeta>=1.4.0
+torch>=1.4.0,<1.5.0
+torchvision>=0.5.0,<0.6.0
+ 
