@@ -9,7 +9,6 @@ pip install -r requirements.txt
 ```
 
 ### via conda
-**Not tested yet**
 ```bash
 conda create -n <environment_name>
 conda activate <environment_name>
