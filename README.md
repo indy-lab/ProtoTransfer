@@ -12,5 +12,10 @@ For setting up a Python environment to run our experiments, please refer to [omn
 ## Citation
 
 ```
-
+@article{medina2020selfsupervised,
+    title="{Self-Supervised Prototypical Transfer Learning for Few-Shot Classification}",
+    author={Carlos Medina and Arnout Devos and Matthias Grossglauser},
+    journal={arXiv preprint arXiv:2006.11325},
+    year={2020}
+}
 ```
