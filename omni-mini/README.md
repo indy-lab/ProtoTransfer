@@ -43,7 +43,7 @@ The datasets by default will be downloaded in the `ProtoTransfer/few_data/` fold
 #### mini-ImageNet, Omniglot & CUB
 Omniglot and CUB can be downloaded via the script `python prototransfer/load_data.py --dataset <dataset_name>`.
 
-`python prototransfer/load_data.py --dataset miniimagnet`
+`python prototransfer/load_data.py --dataset miniimagenet`
 
 `python prototransfer/load_data.py --dataset omniglot`
 
