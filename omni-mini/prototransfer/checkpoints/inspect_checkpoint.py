@@ -8,11 +8,17 @@ def inspect_folder():
     dirs = sorted([d for d in dirs if os.path.isdir(d)])
     for i, d in enumerate(dirs):
         print('[{}] '.format(i) + d)
+    print('[{}] exit'.format(len(dirs)))
 
     folder = input('Please choose a folder number between 0 and {}:\
                    '.format(len(dirs)-1))
-    folder = dirs[int(folder)]
-    inspect_checkpoint(folder)
+    folder = int(folder)
+
+    if folder == len(dirs):
+        return
+    else:
+        folder = dirs[folder]
+        inspect_checkpoint(folder)
 
 def inspect_checkpoint(folder):
     print('Found checkpoints ...')
@@ -23,7 +29,7 @@ def inspect_checkpoint(folder):
     print('[{}] go back to other folders'.format(len(ckpts)))
 
     checkpoint = input('Please choose a checkpoint number between 0 and {}:\
-                       '.format(len(ckpts)))
+                       '.format(len(ckpts)-1))
     checkpoint = int(checkpoint)
     if checkpoint == len(ckpts):
         inspect_folder()

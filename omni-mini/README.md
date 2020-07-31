@@ -59,7 +59,7 @@ Use `python prototransfer/train.py --<args>`, where the following arguments are 
 * `--n_images` to limit the number of images to load for training
 * `--n_classes` to limit the number of classes to load for training
 
-This will save a checkpoint in `prototransfer/checkpoints/ `
+This will save a checkpoint in `prototransfer/checkpoints/ `. This will not over-write our pre-trained models as they are within further sub-directories.
 
 For example *to train the ProtoCLR model described in our paper* with 1 support and 3 query examples run:
 ```bash
@@ -71,7 +71,7 @@ python prototransfer/train.py --dataset miniimagenet \
 
 To train the models in our ablation studies simply add `--n_images <int>` or `--n_classes <int>`.
 
-*Many more argumentes can be found in `prototransfer/train.py`*
+*Many more arguments can be found in `prototransfer/train.py`*
 
 #### For evaluation:
 Use `python prototransfer/eval.py --<args>`, where the following arguments are used to evaluate our reported experiments:
@@ -90,7 +90,7 @@ python prototransfer/eval.py --dataset miniimagenet \
 	--eval_query_shots 15 \
 	--sup_finetune \
 	--ft_freeze_backbone \
-	--load_path prototransfer/checkpoints/protoclr/protoclr_miniimagenet_conv4_euclidean_1supp_3query_50bs_best.pth.tar
+	--load_path prototransfer/checkpoints/protoclr/proto_miniimagenet_conv4_euclidean_1supp_3query_50bs_best.pth.tar
 ```
 
 Pre-trained models for all our experiments can be found in the different folders within `prototransfer/checkpoints/`.
@@ -98,14 +98,14 @@ Pre-trained models for all our experiments can be found in the different folders
 	* example name for reduced \# images: `proto_miniimagenet_conv4_euclidean_1supp_3query_50bs_1200images_best.pth.tar`
 	* example name for reduced \# classes: `proto_miniimagenet_conv4_euclidean_1supp_3query_50bs_2classes_best.pth.tar`
 * protoclr: contains the different protoclr checkpoints with different numbers of queries etc.
-	* exmaple name for mini-ImageNet: `protoclr_miniimagenet_conv4_euclidean_1supp_3query_50bs_best.pth.tar`
+	* exmaple name for mini-ImageNet: `proto_miniimagenet_conv4_euclidean_1supp_3query_50bs_best.pth.tar`
 	* example name for Omniglot: `proto_omniglot_conv4_euclidean_1supp_3query_50sbs_best.pth.tar`
 * umtra: contains the umtra checkpoints.
 	* for mini-ImagNet: `umtra_miniimagenet_conv4_euclidean_1supp_1query_5bs_best.pth.tar`
 	* for Omniglot: `umtra_omniglot_conv4_euclidean_1supp_1query_5bs_best.pth.tar`
 
 
-*Many more argumentes can be found in `prototransfer/eval.py`*
+*Many more arguments can be found in `prototransfer/eval.py`*
 
 #### Bash files
 Alternatively, we also provide bash scripts for most used setups. 
@@ -135,12 +135,23 @@ python prototransfer/eval.py --dataset miniimagenet \
 	--eval_query_shots 15 \
 	--sup_finetune \
 	--ft_freeze_backbone \
-	--load_path prototransfer/checkpoints/protoclr/protoclr_miniimagenet_conv4_euclidean_1supp_3query_50bs_best.pth.tar
+	--load_path prototransfer/checkpoints/protoclr/proto_miniimagenet_conv4_euclidean_1supp_3query_50bs_best.pth.tar
 echo This was: All images, ${n_shot} shot
 
 ...
 ```
 
+#### t-SNE plots
+For t-SNE visualizations and given a pre-trained model    
+* save the extracted features for a given dataset
+* plot t-SNE with saved features
+
+*Saving features for ProtoCLR:*    
+```bash
+python save_features.py
+```
+
+This will use the pre-trained model at `prototransfer/checkpoints/protoclr/proto_miniimagenet_conv4_euclidean_1supp_3query_50bs_best.pth.tar` and save features at `plots/featuresProtoCLR_mini-ImageNet_train.hdf5` and `plots/featuresProtoCLR_mini-ImageNet_test.hdf5`.
 
 ## Citation
 If you use this code, please cite our paper:

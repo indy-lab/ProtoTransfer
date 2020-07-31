@@ -11,7 +11,7 @@ do
 		--eval_ways 5 \
 		--eval_support_shots ${n_shot} \
 		--eval_query_shots 15 \
-		--load_path prototransfer/checkpoints/protoclr/protoclr_miniimagenet_conv4_euclidean_1supp_3query_50bs_best.pth.tar
+		--load_path prototransfer/checkpoints/protoclr/proto_miniimagenet_conv4_euclidean_1supp_3query_50bs_best.pth.tar
     	echo This was: Standard ProtoCLR, ${n_shot} shot
 done
 

@@ -13,7 +13,7 @@ do
 		--eval_ways 5 \
 		--eval_support_shots ${n_shot} \
 		--eval_query_shots 15 \
-		--load_path prototransfer/checkpoints/proto_miniimagenet_conv4_euclidean_1supp_3query_50bs_${n_class}classes_best.pth.tar
+		--load_path prototransfer/checkpoints/ablation_n_images/proto_miniimagenet_conv4_euclidean_1supp_3query_50bs_${n_class}classes_best.pth.tar
 
 	echo This was: ${n_class} classes, ${n_shot} shot
     done
@@ -30,7 +30,7 @@ do
 		--eval_ways 5 \
 		--eval_support_shots ${n_shot} \
 		--eval_query_shots 15 \
-		--load_path prototransfer/checkpoints/proto_miniimagenet_conv4_euclidean_1supp_3query_50bs_${n_images}images_best.pth.tar
+		--load_path prototransfer/checkpoints/ablation_n_images/proto_miniimagenet_conv4_euclidean_1supp_3query_50bs_${n_images}images_best.pth.tar
 
 	echo This was: ${n_images} images, ${n_shot} shot
     done

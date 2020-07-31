@@ -13,7 +13,7 @@ python prototransfer/eval.py --dataset miniimagenet \
 	--sup_finetune \
 	--ft_freeze_backbone \
 	--mode val \
-	--load_path prototransfer/checkpoints/protoclr/protoclr_miniimagenet_conv4_euclidean_1supp_3query_50bs_best.pth.tar
+	--load_path prototransfer/checkpoints/protoclr/proto_miniimagenet_conv4_euclidean_1supp_3query_50bs_best.pth.tar
 
 echo This was: ProtoTrasnfer, ${n_shot} shot
 done
@@ -31,7 +31,7 @@ do
 		--eval_support_shots ${n_shot} \
 		--eval_query_shots 15 \
 		--mode val \
-		--load_path prototransfer/checkpoints/protoclr/protoclr_miniimagenet_conv4_euclidean_1supp_${n_query}query_50bs_best.pth.tar
+		--load_path prototransfer/checkpoints/protoclr/proto_miniimagenet_conv4_euclidean_1supp_${n_query}query_50bs_best.pth.tar
 
 	echo This was: ${n_query} classes, ${n_shot} shot
     done

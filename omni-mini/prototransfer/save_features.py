@@ -9,6 +9,10 @@ from torchvision.transforms.functional import to_tensor
 from torchvision import transforms
 from torch.autograd import Variable
 
+sys.path.append(os.path.join(os.path.realpath(os.path.dirname(__file__)),
+                           '../'))
+import configs
+
 class LabelledDataset(Dataset):
     def __init__(self, dataset, datapath, split, class_keys):
         """
@@ -41,7 +45,6 @@ class LabelledDataset(Dataset):
             datasets = f['datasets']
             classes = [datasets[k][()] for k in class_keys]
             labels = [np.repeat([i], len(datasets[k][()])) for i, k in enumerate(class_keys)]
-            #print(class_keys, len(labels) == len(classes))
 
         # Collect in single array
         data = np.concatenate(classes)
@@ -95,22 +98,18 @@ def save_features(model, data_loader, outfile):
     f.close()
 
 if __name__ == '__main__':
-    #train_classes = ["n01558993", "n01704323", "n01749939",
-    #                 "n01770081", "n01843383"]
     train_classes = ["n02687172", "n04251144", "n02823428", "n03676483", "n03400231"]
-    #test_classes = ["n01981276", "n02099601", "n02110063",
-    #                "n02110341", "n02116738"]
     test_classes = ["n03272010", "n07613480", "n03775546", "n03127925", "n04146614"]
-    trainset = LabelledDataset('miniimagenet', '../../semifew_data',
+    trainset = LabelledDataset('miniimagenet', configs.data_path,
                                'train', train_classes)
-    testset = LabelledDataset('miniimagenet', '../../semifew_data',
+    testset = LabelledDataset('miniimagenet', configs.data_path,
                               'test', test_classes)
     trainloader = DataLoader(trainset, shuffle=False, batch_size=100)
     testloader = DataLoader(testset, shuffle=False, batch_size=100)
 
     # Load checkpoint
     model = CNN_4Layer(in_channels=3)
-    load_path = 'prototransfer/checkpoints/protoclr/protoclr_miniimagenet_conv4_euclidean_1supp_3query_50bs_best.pth.tar'
+    load_path = 'prototransfer/checkpoints/protoclr/proto_miniimagenet_conv4_euclidean_1supp_3query_50bs_best.pth.tar'
     checkpoint = torch.load(load_path)
     model.load_state_dict(checkpoint['model'])
     start_epoch = checkpoint['epoch']
@@ -120,7 +119,7 @@ if __name__ == '__main__':
     model.cuda()
     model.eval()
     print('----------------- Save train features ------------------------')
-    save_features(model, trainloader, 'plots/featuresProtoCLR_mini-ImageNet_train_new.hdf5') 
+    save_features(model, trainloader, 'plots/featuresProtoCLR_mini-ImageNet_train.hdf5')
     print('----------------- Save test features ------------------------')
-    save_features(model, testloader, 'plots/featuresProtoCLR_mini-ImageNet_test_new.hdf5') 
+    save_features(model, testloader, 'plots/featuresProtoCLR_mini-ImageNet_test.hdf5')
 
