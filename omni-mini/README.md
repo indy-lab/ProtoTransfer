@@ -152,11 +152,3 @@ python save_features.py
 ```
 
 This will use the pre-trained model at `prototransfer/checkpoints/protoclr/proto_miniimagenet_conv4_euclidean_1supp_3query_50bs_best.pth.tar` and save features at `plots/featuresProtoCLR_mini-ImageNet_train.hdf5` and `plots/featuresProtoCLR_mini-ImageNet_test.hdf5`.
-
-## Citation
-If you use this code, please cite our paper:
-
-```
-@inproceedings{}
-```
-
